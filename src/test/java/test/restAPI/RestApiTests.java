@@ -20,8 +20,7 @@ class RestApiTests {
 
 	@Test
 	void responseDefault() throws Exception {
-		this.request.perform(get("/resource")).andDo(print()).andExpect(status().isOk())
-				.andExpect(MockMvcResultMatchers.jsonPath("$.content").value("Welcome, Guest!"));
+		this.request.perform(get("/resource")).andDo(print()).andExpect(status().isInternalServerError());
 	}
 
 	@Test
