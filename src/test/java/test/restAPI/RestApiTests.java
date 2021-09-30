@@ -24,5 +24,9 @@ class RestApiTests {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.content").value("Welcome, Guest!"));
 	}
 
-
+	@Test
+	void responseUserWithId() throws Exception {
+		this.request.perform(get("/resource?userId=4")).andDo(print()).andExpect(status().isOk())
+				.andExpect(MockMvcResultMatchers.jsonPath("$.content").value("Welcome, Tom, Ryan!"));
+	}
 }

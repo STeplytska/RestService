@@ -2,6 +2,7 @@ package test.restAPI;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,11 +14,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RestController
 public class ResourceController {
 
-    public static final String response = "Welcome, %s!";
     private final AtomicInteger idUser = new AtomicInteger();
 
+    @Autowired
+    private final Model model;
+
     @GetMapping("/resource")
-    public ResourceRepresentation resource(@RequestParam(value = "userName", defaultValue = "Guest") String userName) {
-        return new ResourceRepresentation(idUser.incrementAndGet(), String.format(response, userName));
+    public ResourceRepresentation resource(@RequestParam(value = "userId", defaultValue = "0") int userId) {
+        return new ResourceRepresentation(idUser.incrementAndGet(), model.welcomeMessage(userId));
     }
 }
