@@ -28,4 +28,16 @@ class RestApiTests {
 		this.request.perform(get("/resource?userId=4")).andDo(print()).andExpect(status().isOk())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.content").value("Welcome, Tom, Ryan!"));
 	}
+
+	@Test
+	void visits() throws Exception {
+		this.request.perform(get("/resource?userId=4")).andDo(print()).andExpect(status().isOk())
+				.andExpect(MockMvcResultMatchers.jsonPath("$.content").value("Welcome, Tom, Ryan!"));
+
+		this.request.perform(get("/visits")).andDo(print()).andExpect(status().isOk())
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].userId").value("4"))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].count").value("1"))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].firstName").value("Tom"))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].lastName").value("Ryan"));
+	}
 }

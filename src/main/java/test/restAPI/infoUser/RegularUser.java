@@ -1,9 +1,9 @@
 package test.restAPI.infoUser;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class RegularUser extends People{
-    public RegularUser(int Id, String firstName, String LastName, LocalDate lastVisit) {
+    public RegularUser(int Id, String firstName, String LastName, LocalDateTime lastVisit) {
         super(Id, firstName, LastName, lastVisit, "regularUser");
     }
 

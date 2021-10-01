@@ -1,10 +1,10 @@
 package test.restAPI.infoUser;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Guest extends People{
     public Guest(int Id, String firstName, String lastName) {
-        super(Id, firstName, lastName, LocalDate.now(), "Guest");
+        super(Id, firstName, lastName, LocalDateTime.now(), "Guest");
     }
 
     @Override

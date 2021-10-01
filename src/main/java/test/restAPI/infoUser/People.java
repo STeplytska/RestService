@@ -2,8 +2,9 @@ package test.restAPI.infoUser;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Getter
@@ -11,7 +12,8 @@ public abstract class People {
     private final int id;
     private final String firstName;
     private final String lastName;
-    private final LocalDate lastVisit;
+    @Setter
+    private LocalDateTime lastVisit;
     private final String role;
 
     @Override
