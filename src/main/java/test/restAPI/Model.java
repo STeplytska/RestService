@@ -13,13 +13,13 @@ public class Model {
 
     private final List<People> peopleFromStorage = Arrays.asList(
             new Guest(4, "Tom", "Ryan"),
-            new RegularUser(20, "Carla", "Darcy", LocalDateTime.of(2017,2,25,22, 20, 5)),
+            new RegularUser(20, "Carla", "Darcy", LocalDateTime.of(2017, 2, 25, 22, 20, 5)),
             new Guest(56, "Jones", "Williams"),
-            new RegularUser(65, "Roberts", "Miller", LocalDateTime.of(2021,2,12,12, 10, 30)),
-            new RegularUser(32, "Clark", "Morris", LocalDateTime.of(2021,4,3,16, 14, 3)),
-            new RegularUser(45, "Garry", "Potter", LocalDateTime.of(2020,2,16,14, 20, 0)),
+            new RegularUser(65, "Roberts", "Miller", LocalDateTime.of(2021, 2, 12, 12, 10, 30)),
+            new RegularUser(32, "Clark", "Morris", LocalDateTime.of(2021, 4, 3, 16, 14, 3)),
+            new RegularUser(45, "Garry", "Potter", LocalDateTime.of(2020, 2, 16, 14, 20, 0)),
             new Guest(34, "Adas", "Scott"),
-            new RegularUser(120, "Mary", "Ryan", LocalDateTime.of(2019,12,5,7, 17, 15)));
+            new RegularUser(120, "Mary", "Ryan", LocalDateTime.of(2019, 12, 5, 7, 17, 15)));
 
     private final HashMap<Integer, Integer> visits = new HashMap<>();
 
@@ -29,7 +29,10 @@ public class Model {
                 .stream()
                 .filter(f -> idUser == (f.getId()))
                 .findFirst()
-                .map(f -> {f.setLastVisit(LocalDateTime.now()); return f.getWelcomeMessage();})
+                .map(f -> {
+                    f.setLastVisit(LocalDateTime.now());
+                    return f.getWelcomeMessage();
+                })
                 .orElseThrow(() -> new IllegalStateException("Authorize before using the service"));
     }
 
@@ -73,11 +76,7 @@ public class Model {
     }
 
     private void markVisit(final int idUser) {
-        if (visits.containsKey(idUser)) {
-            int count = visits.get(idUser);
-            visits.put(idUser, ++count);
-        } else {
-            visits.put(idUser, 1);
-        }
+        int count = visits.getOrDefault(idUser, 0);
+        visits.put(idUser, ++count);
     }
 }
