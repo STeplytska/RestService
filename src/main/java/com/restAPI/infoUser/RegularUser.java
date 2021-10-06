@@ -1,4 +1,4 @@
-package test.restAPI.infoUser;
+package com.restAPI.infoUser;
 
 import java.time.LocalDateTime;
 
@@ -9,6 +9,6 @@ public class RegularUser extends People{
 
     @Override
     public String getWelcomeMessage() {
-        return String.format("Welcome, %s, %s,! \nYour last visit is %s", getFirstName(), getLastName(), getLastVisit());
+        return String.format("Welcome, %s %s! \nYour last visit is %s", getFirstName(), getLastName(), getLastVisit());
     }
 }

@@ -1,4 +1,4 @@
-package test.restAPI;
+package com.restAPI;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

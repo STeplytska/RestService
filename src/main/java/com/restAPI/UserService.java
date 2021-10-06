@@ -1,21 +1,22 @@
-package test.restAPI;
+package com.restAPI;
 
-import org.springframework.stereotype.Component;
-import test.restAPI.infoUser.Guest;
-import test.restAPI.infoUser.People;
-import test.restAPI.infoUser.RegularUser;
+import com.restAPI.infoUser.People;
+import com.restAPI.infoUser.Guest;
+import com.restAPI.infoUser.RegularUser;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Arrays;
+import java.util.Set;
 
-@Component
-public class Model {
+public class UserService {
 
     private final List<People> peopleFromStorage = Arrays.asList(
-            new Guest(4, "Tom", "Ryan"),
             new RegularUser(20, "Carla", "Darcy", LocalDateTime.of(2017, 2, 25, 22, 20, 5)),
-            new Guest(56, "Jones", "Williams"),
+            new Guest(4, "Tom", "Ryan"),
             new RegularUser(65, "Roberts", "Miller", LocalDateTime.of(2021, 2, 12, 12, 10, 30)),
+            new Guest(56, "Jones", "Williams"),
             new RegularUser(32, "Clark", "Morris", LocalDateTime.of(2021, 4, 3, 16, 14, 3)),
             new RegularUser(45, "Garry", "Potter", LocalDateTime.of(2020, 2, 16, 14, 20, 0)),
             new Guest(34, "Adas", "Scott"),

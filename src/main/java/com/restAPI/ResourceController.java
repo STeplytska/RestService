@@ -1,4 +1,4 @@
-package test.restAPI;
+package com.restAPI;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,15 +16,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RestController
 public class ResourceController {
 
-    private final AtomicInteger idUser = new AtomicInteger();
+    private final AtomicInteger startPoint = new AtomicInteger(0);
 
     @Autowired
-    private final Model model;
+    private final UserService userService;
 
     @GetMapping("/resource")
-    public ResourceRepresentation resource(@RequestParam(value = "userId", defaultValue = "0") int userId) {
+    public String resource(@RequestParam(value = "userId", defaultValue = "0") int userId) {
         try {
-            return new ResourceRepresentation(idUser.incrementAndGet(), model.welcomeMessage(userId));
+            return String.format("{%d (id=%s) %s}", startPoint.incrementAndGet(), userId, userService.welcomeMessage(userId));
         } catch (IllegalStateException ex) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error", ex);
         }

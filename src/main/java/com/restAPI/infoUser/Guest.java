@@ -1,4 +1,4 @@
-package test.restAPI.infoUser;
+package com.restAPI.infoUser;
 
 import java.time.LocalDateTime;
 
@@ -9,6 +9,6 @@ public class Guest extends People{
 
     @Override
     public String getWelcomeMessage() {
-        return String.format("Welcome, %s, %s!", getFirstName(), getLastName());
+        return String.format("Welcome, %s %s!", getFirstName(), getLastName());
     }
 }
