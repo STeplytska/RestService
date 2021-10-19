@@ -45,7 +45,7 @@ public class MyStepdefs {
         JSONObject json = new JSONObject(Objects.requireNonNull(client.testJs().getBody()).replace("[","").replace("]", ""));
         assertThat(client.testJs().getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(json.getString("userId")).isEqualTo(arg2);
-        assertThat(json.getString("count")).isEqualTo("2");
+        assertThat(json.getString("count")).isEqualTo("1");
         assertThat(json.getString("firstName")).isEqualTo(arg0);
         assertThat(json.getString("lastName")).isEqualTo(arg1);
         System.out.println("User "

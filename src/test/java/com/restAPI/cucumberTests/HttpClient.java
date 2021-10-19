@@ -47,7 +47,7 @@ public class HttpClient {
 
     public HttpStatus statusServerError() throws HttpServerErrorException {
         try {
-            return this.testJs().getStatusCode();
+            return restTemplate.getForEntity(resourceEndpoint(), String.class).getStatusCode();
         } catch (HttpServerErrorException e) {
             return e.getStatusCode();
         }
